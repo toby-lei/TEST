@@ -10,11 +10,7 @@ pool:
   vmImage: 'macos-latest'
 
 steps:
-- task: Gradle@2
+- task: Xcode@5
   inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    publishJUnitResults: false
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'assembleDebug'
+    actions: 'build'
+    packageApp: false
