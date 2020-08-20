@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'macOS-10.14'
 
 steps:
 - task: NodeTool@0
@@ -15,7 +15,22 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+- task: Gradle@2
+  inputs:
+    workingDirectory: ''
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    publishJUnitResults: false
+    testResultsFiles: '**/TEST-*.xml'
+    tasks: 'assembleDebug'
+
+
+# - task: AndroidSigning@2
+#   inputs:
+#     apkFiles: '**/*.apk'
+#     jarsign: true
+#     jarsignerKeystoreFile: 'pathToYourKeystoreFile'
+#     jarsignerKeystorePassword: '$(jarsignerKeystorePassword)'
+#     jarsignerKeystoreAlias: 'yourKeystoreAlias'
+#     jarsignerKeyPassword: '$(jarsignerKeyPassword)'
+#     zipalign: true
