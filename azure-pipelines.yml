@@ -12,5 +12,9 @@ pool:
 steps:
 - task: Xcode@5
   inputs:
-    actions: 'build'
+    sdk: '$(sdk)'
+    scheme: '$(scheme)'
+    configuration: '$(configuration)'
+    xcodeVersion: 'default' # Options: default, 10, 9, 8, specifyPath
+    exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
     packageApp: false
