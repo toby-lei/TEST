@@ -13,7 +13,8 @@ name: $(date:yyyy).$(Month)$(rev:.r)
 
 steps:
 
-- script: yarn install
+- script: npm config set registry http://registry.npm.taobao.org/
+- script: npm install
 
 - task: Gradle@2
   inputs:
