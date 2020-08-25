@@ -30,9 +30,9 @@ steps:
   inputs:
     apkFiles: '**/*.apk'
     apksignerKeystoreFile: 'AndoridKeyStore.keystore'
-    apksignerKeystorePassword: 'A123456a'
-    apksignerKeystoreAlias: 'key1'
-    apksignerKeyPassword: 'A123456a'
+    apksignerKeystorePassword: '$(KeyStorePassword)'
+    apksignerKeystoreAlias: '$(KeyAlias)'
+    apksignerKeyPassword: '$(KeyPassword)'
     zipalign: false
 
 - task: PublishBuildArtifacts@1
