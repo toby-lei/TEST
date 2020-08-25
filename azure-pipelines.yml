@@ -11,6 +11,9 @@ pool:
 
 name: $(date:yyyy).$(Month)$(rev:.r)
 
+variables:
+- group: my-variable-group
+
 steps:
 
 # - script: npm config set registry http://registry.npm.taobao.org/
